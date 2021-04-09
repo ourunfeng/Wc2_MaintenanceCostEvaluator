@@ -32,13 +32,18 @@ namespace Form_维护费评估器
             this.path = newPath;
             if (IsExist == false)
             {
-                //File.Create(newPath);
-
-                WriteTxt(newPath);
+   
+               // using (File.Create(newPath)) ;
+                 WriteTxt(newPath);
 
 
             }
             LoadText();
+        }
+
+        private void test(string newPath)
+        {
+            File.Create(newPath);
         }
         /// <summary>
         /// 文件写入
@@ -47,7 +52,7 @@ namespace Form_维护费评估器
         {
             //创建文件
             FileStream ss = new FileStream(newPath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-
+            
             ss.Close();
             StreamWriter writeTxt = new StreamWriter(newPath);
 
